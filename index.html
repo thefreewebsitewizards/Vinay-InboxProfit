@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InboxProfit | Email Marketing Experts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/the-seasons');
+        
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .seasons-font {
+            font-family: 'The Seasons', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #f4ebd0 0%, #b68d40 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn-gold {
+            background: linear-gradient(45deg, #b68d40 0%, #d6ad60 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(45deg, #d6ad60 0%, #b68d40 100%);
+            box-shadow: 0 0 15px rgba(214, 173, 96, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #b68d40;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .checkmark {
+            color: #b68d40;
+            margin-right: 10px;
+        }
+        
+        .footer-bg {
+            background-color: #122620;
+        }
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #b68d40;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+        }
+        
+        .scroll-top:hover {
+            background: #d6ad60;
+            transform: translateY(-5px);
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .glow-effect {
+            position: relative;
+        }
+        
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, rgba(182, 141, 64, 0.3) 0%, rgba(182, 141, 64, 0.1) 50%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+        
+        .hover\:shadow-3xl:hover {
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .animate-slideUp {
+            animation: slideUp 0.8s ease forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+        
+        .delay-700 {
+            animation-delay: 0.7s;
+        }
+        
+        .delay-1000 {
+            animation-delay: 1s;
+        }
+        
+        /* Custom animations for hero section */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .animate-spin-slow {
+            animation: spin-slow 8s linear infinite;
+        }
+        
+        .hover\:shadow-3xl:hover {
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Form styling */
+        .form-input {
+            border: 1px solid #d6ad60;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #b68d40;
+            box-shadow: 0 0 0 3px rgba(182, 141, 64, 0.2);
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, rgba(182, 141, 64, 0) 0%, #b68d40 50%, rgba(182, 141, 64, 0) 100%);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-3xl font-bold seasons-font logo-gradient" style="font-family: The Season; background: linear-gradient(90deg, #000000 50%, #d6ad60 50%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" >InboxProfit</div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link text-[#122620] hover:text-[#b68d40]">About</a>
+                    <a href="#services" class="nav-link text-[#122620] hover:text-[#b68d40]">Services</a>
+                    <a href="#contact" class="nav-link text-[#122620] hover:text-[#b68d40]">Contact</a>
+                    <a href="#contact" class="btn-gold px-6 py-2 rounded-full text-white font-semibold">Get Started</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-[#122620] focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <!-- Mobile Menu Backdrop -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed inset-0 z-50">
+            <!-- Backdrop Overlay -->
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+            
+            <!-- Menu Panel -->
+            <div class="absolute top-0 right-0 w-4/5 sm:w-3/5 md:w-1/2 h-full bg-white/95 backdrop-blur-lg border-l border-white/20 shadow-2xl">
+                <!-- Close Button -->
+                <button id="close-btn" class="absolute top-6 right-6 text-[#122620] text-2xl hover:text-[#d6ad60] transition-all duration-300 p-3 rounded-full hover:bg-[#d6ad60]/10 hover:rotate-90">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <!-- Menu Content -->
+                <div class="flex flex-col h-full justify-center items-center px-8 space-y-8">
+                    <!-- Brand Section -->
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-[#122620] mb-2">Menu</h3>
+                        <div class="w-16 h-1 bg-gradient-to-r from-[#b68d40] to-[#d6ad60] rounded-full mx-auto"></div>
+                    </div>
+                    
+                    <!-- Navigation Links -->
+                    <div class="flex flex-col space-y-6 w-full">
+                        <a href="#about" class="group flex items-center justify-between w-full px-6 py-4 text-lg text-[#122620] hover:text-[#d6ad60] transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-[#f4ebd0]/50 hover:to-[#d6ad60]/10 border border-transparent hover:border-[#d6ad60]/20">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d6ad60] to-[#b68d40] flex items-center justify-center text-white">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <span class="font-medium">About</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-[#d6ad60] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </a>
+                        
+                        <a href="#services" class="group flex items-center justify-between w-full px-6 py-4 text-lg text-[#122620] hover:text-[#d6ad60] transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-[#f4ebd0]/50 hover:to-[#d6ad60]/10 border border-transparent hover:border-[#d6ad60]/20">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d6ad60] to-[#b68d40] flex items-center justify-center text-white">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <span class="font-medium">Services</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-[#d6ad60] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </a>
+                        
+                        <a href="#contact" class="group flex items-center justify-between w-full px-6 py-4 text-lg text-[#122620] hover:text-[#d6ad60] transition-all duration-300 rounded-2xl hover:bg-gradient-to-r hover:from-[#f4ebd0]/50 hover:to-[#d6ad60]/10 border border-transparent hover:border-[#d6ad60]/20">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d6ad60] to-[#b68d40] flex items-center justify-center text-white">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <span class="font-medium">Contact</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-[#d6ad60] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div class="w-full mt-8">
+                        <a href="#contact" class="block w-full text-center bg-gradient-to-r from-[#b68d40] to-[#d6ad60] text-white font-bold py-4 px-6 rounded-2xl hover:from-[#d6ad60] hover:to-[#b68d40] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-rocket mr-3"></i>Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen pt-32 pb-20 px-6 flex items-center">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <!-- Enhanced Image/Illustration Section -->
+                <div class="md:w-1/2 animate-fadeIn delay-100 relative">
+                    
+                    
+                    <!-- Main image container with enhanced styling -->
+                    <div class="relative glow-effect">
+                        <!-- Floating stats cards -->
+                        <div class="absolute -top-6 -left-6 bg-white rounded-lg shadow-lg p-3 animate-bounce delay-500 z-20">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-sm font-semibold text-gray-700">+40% Revenue</span>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <!-- Main hero image -->
+                        <img src="Images/hero.png" alt="Email Marketing Dashboard" class="rounded-lg w-full max-w-lg mx-auto relative z-10 transform transition-all duration-500 hover:scale-110 hover:rotate-2 hover:shadow-3xl animate-fade-in-up animate-float cursor-pointer">
+                        
+                        <!-- Overlay gradient for depth -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-[#b68d40]/10 to-transparent rounded-2xl pointer-events-none"></div>
+                    </div>
+                    
+                    <!-- Additional floating elements -->
+                    <div class="absolute top-1/4 -right-4 w-16 h-16 border-4 border-[#d6ad60] rounded-full animate-spin-slow opacity-30"></div>
+                    <div class="absolute bottom-1/4 -left-8 w-12 h-12 bg-gradient-to-r from-[#b68d40] to-[#d6ad60] rounded-lg rotate-45 animate-pulse opacity-40"></div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="w-full md:w-1/2 mb-8 md:mb-0 animate-slideUp px-4 md:px-0 pt-4 md:pt-0">
+                    <h1 id="typewriter-heading" class="seasons-font text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#122620] mb-6 md:mb-8 text-center md:text-left typewriter" style="font-family: The Seasons;" data-text="Turn Your Email List Into A Revenue Machine"></h1>
+                    <p class="text-center md:text-justify text-base md:text-lg text-[#122620] mb-6 opacity-90 leading-relaxed px-2 md:px-0" style="font-family: Josefin Sans;">We help D2C brands scale to 7–8 figures through data-driven email campaigns that convert browsers into buyers and customers into advocates.</p>
+                    
+                    <div class="mb-8 md:mb-10 space-y-3 md:space-y-4">
+                        <div class="flex items-center animate-fadeIn delay-200 px-2 md:px-0">
+                            <i class="fas fa-chart-line checkmark flex-shrink-0"></i>
+                            <span class="text-sm md:text-base ml-3">30–40% increase in email revenue within 90 days</span>
+                        </div>
+                        <div class="flex items-center animate-fadeIn delay-300 px-2 md:px-0">
+                            <i class="fas fa-envelope-open checkmark flex-shrink-0"></i>
+                            <span class="text-sm md:text-base ml-3">Higher open rates and click-through rates</span>
+                        </div>
+                        <div class="flex items-center animate-fadeIn delay-400 px-2 md:px-0">
+                            <i class="fas fa-cogs checkmark flex-shrink-0"></i>
+                            <span class="text-sm md:text-base ml-3">Automated email flows that work 24/7</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 px-4 md:px-0">
+                        <a href="#contact" class="px-6 md:px-8 py-3 rounded-full border-2 border-[#122620] text-[#122620] font-semibold text-center hover:bg-[#122620] hover:text-white transition-all duration-300 animate-slideUp delay-600 text-sm md:text-base">
+                            <i class="fas fa-phone-alt mr-2"></i> Get a Free Strategy Call
+                        </a>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-12 px-6 bg-white">
+        <div class="container mx-auto">
+             <!-- Animated Science Header with Decorative Elements -->
+             <div class="relative mb-6">
+                 <!-- Floating Decorative Elements -->
+                 <div class="absolute -top-3 -left-6 w-6 h-6 bg-gradient-to-r from-[#b68d40] to-[#d6ad60] rounded-full opacity-60 animate-bounce"></div>
+                 <div class="absolute -top-4 -right-4 w-8 h-8 bg-[#d6ad60] rounded-full opacity-50 animate-pulse"></div>
+                 <div class="absolute -bottom-2 left-1/3 w-4 h-4 bg-gradient-to-r from-[#d6ad60] to-[#b68d40] rounded-full opacity-70 animate-ping"></div>
+                 
+                 <!-- Main Heading with Enhanced Animations -->
+                 <h2 class="seasons-font text-center text-4xl md:text-5xl lg:text-5xl font-bold relative z-10 
+                           bg-gradient-to-r from-[#122620] via-[#b68d40] to-[#122620] bg-clip-text text-transparent 
+                           hover:scale-105 hover:drop-shadow-lg transition-all duration-500 ease-in-out
+                           animate-gradient-shift cursor-default group" 
+                     style="font-family: The Seasons; background-size: 200% 200%;">
+                     The Science Behind Email Excellence
+                     
+                     <!-- Animated Underline -->
+                     <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-[#b68d40] to-[#d6ad60] 
+                                group-hover:w-full transition-all duration-700 ease-out rounded-full"></div>
+                 </h2>
+             </div>
+             
+             <!-- CSS Keyframes for Custom Animations (if not already present) -->
+             <style>
+                 @keyframes gradient-shift {
+                     0% { background-position: 0% 50%; }
+                     50% { background-position: 100% 50%; }
+                     100% { background-position: 0% 50%; }
+                 }
+                 
+                 .animate-gradient-shift {
+                     animation: gradient-shift 4s ease-in-out infinite;
+                 }
+                 
+            /* Typewriter Animation */
+            @keyframes typing {
+                from { width: 0; }
+                to { width: 100%; }
+            }
+            
+            @keyframes blink-caret {
+                from, to { border-color: transparent; }
+                50% { border-color: #d6ad60; }
+            }
+            
+            .typewriter {
+                  overflow: hidden;
+                  border-right: 3px solid #d6ad60;
+                  white-space: pre-line;
+                  margin: 0 auto;
+                  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+                  line-height: 1.2;
+              }
+              
+              @media (max-width: 768px) {
+                  .typewriter {
+                      border-right: 2px solid #d6ad60;
+                      animation: typing 4s steps(35, end), blink-caret 0.75s step-end infinite;
+                      line-height: 1.1;
+                  }
+              }
+              
+              @media (max-width: 480px) {
+                  .typewriter {
+                      border-right: 2px solid #d6ad60;
+                      animation: typing 4.5s steps(30, end), blink-caret 0.75s step-end infinite;
+                      line-height: 1.0;
+                  }
+              }
+        </style>
+             <div class="animate-fade-in-up delay-100 bg-gradient-to-r from-[#f4ebd0] to-white p-4 md:p-6 rounded-xl shadow-lg border-l-4 border-[#b68d40] hover:shadow-xl transition-all duration-300 mx-2 md:mx-0">
+                        <div class="text-center">
+                            <p class="text-base md:text-lg text-gray-700 mb-3 leading-relaxed px-2 md:px-0">We're not your typical email marketing agency. We're <span class="text-[#b68d40] font-semibold">revenue engineers</span> who happen to specialize in email.</p>
+                            <p class="text-base md:text-lg text-gray-700 leading-relaxed px-2 md:px-0">Our team combines behavioral psychology, data science, and creative storytelling to build email programs that don't just engage—they <span class="text-[#b68d40] font-semibold">convert</span>. We focus on creating sustainable growth for D2C brands through strategic email marketing.</p>
+                        </div>
+                    </div>
+            
+             <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0 animate-slideUp px-2 md:px-0">
+                     
+                   
+                    
+                    <div class="space-y-4 md:space-y-6 p-4 md:p-6 mt-6 md:mt-8 bg-gradient-to-br from-[#f9f7f4] to-white rounded-xl shadow-lg border border-[#e8dcc6] animate-fade-in-up delay-200">
+                        <div class="group animate-fadeIn delay-300 transform hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center mb-2 md:mb-3 p-3 md:p-4 bg-white rounded-lg shadow-sm border-l-4 border-[#b68d40] hover:shadow-md transition-all duration-300">
+                                <div class="w-3 h-3 md:w-4 md:h-4 bg-gradient-to-r from-[#b68d40] to-[#d6ad60] rounded-full mr-3 md:mr-4 animate-pulse flex-shrink-0"></div>
+                                <span class="font-bold text-[#122620] text-base md:text-lg group-hover:text-[#b68d40] transition-colors duration-300">Data-Driven Decisions</span>
+                            </div>
+                            <p class="text-gray-700 ml-6 md:ml-8 leading-relaxed text-sm md:text-base px-2 md:px-0">Every campaign is built on solid data, not guesswork. We test, measure, and optimize relentlessly.</p>
+                        </div>
+                        
+                        <div class="group animate-fadeIn delay-400 transform hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center mb-2 md:mb-3 p-3 md:p-4 bg-white rounded-lg shadow-sm border-l-4 border-[#b68d40] hover:shadow-md transition-all duration-300">
+                                <div class="w-3 h-3 md:w-4 md:h-4 bg-gradient-to-r from-[#b68d40] to-[#d6ad60] rounded-full mr-3 md:mr-4 animate-pulse delay-100 flex-shrink-0"></div>
+                                <span class="font-bold text-[#122620] text-base md:text-lg group-hover:text-[#b68d40] transition-colors duration-300">Psychology-Based Copy</span>
+                            </div>
+                            <p class="text-gray-700 ml-6 md:ml-8 leading-relaxed text-sm md:text-base px-2 md:px-0">Our copywriters understand the triggers that move people from interest to action.</p>
+                        </div>
+                        
+                        <div class="group animate-fadeIn delay-500 transform hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center mb-2 md:mb-3 p-3 md:p-4 bg-white rounded-lg shadow-sm border-l-4 border-[#b68d40] hover:shadow-md transition-all duration-300">
+                                <div class="w-3 h-3 md:w-4 md:h-4 bg-gradient-to-r from-[#b68d40] to-[#d6ad60] rounded-full mr-3 md:mr-4 animate-pulse delay-200 flex-shrink-0"></div>
+                                <span class="font-bold text-[#122620] text-base md:text-lg group-hover:text-[#b68d40] transition-colors duration-300">Technical Excellence</span>
+                            </div>
+                            <p class="text-gray-700 ml-6 md:ml-8 leading-relaxed text-sm md:text-base px-2 md:px-0">We handle the complex technical aspects so your emails actually reach the inbox.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12 animate-fadeIn delay-100">
+                    <div class="bg-gradient-to-br from-[#f4ebd0] to-[#b68d40] text-[#122620] p-4 md:p-8 rounded-lg shadow-xl border-2 border-[#b68d40] hover:shadow-2xl hover:scale-[1.02] hover:border-[#d6ad60] transition-all duration-300">
+                        <h3 class="text-2xl md:text-3xl font-bold text-center mb-2 text-[#122620]">Why Choose InboxProfit?</h3>
+                        <p class="text-center text-[#8a6930] mb-6 md:mb-8 text-sm md:text-base">Strategic email marketing for growth</p>
+                        
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="bg-gradient-to-r from-white to-[#f4ebd0] p-3 md:p-4 rounded-lg border border-[#b68d40] hover:border-[#d6ad60] hover:shadow-lg hover:scale-[1.03] hover:bg-gradient-to-r hover:from-[#f8f4e6] hover:to-[#f0e4c1] transition-all duration-300 cursor-pointer text-center md:text-left">
+                                <h4 class="text-[#8a6930] font-bold mb-1 text-sm md:text-base">Proven Strategies</h4>
+                                <p class="text-gray-700 text-xs md:text-sm">Time-tested email marketing frameworks that deliver results</p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-white to-[#f4ebd0] p-3 md:p-4 rounded-lg border border-[#b68d40] hover:border-[#d6ad60] hover:shadow-lg hover:scale-[1.03] hover:bg-gradient-to-r hover:from-[#f8f4e6] hover:to-[#f0e4c1] transition-all duration-300 cursor-pointer text-center md:text-left">
+                                <h4 class="text-[#8a6930] font-bold mb-1 text-sm md:text-base">D2C Focused</h4>
+                                <p class="text-gray-700 text-xs md:text-sm">Specialized in direct-to-consumer brand challenges and opportunities</p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-white to-[#f4ebd0] p-3 md:p-4 rounded-lg border border-[#b68d40] hover:border-[#d6ad60] hover:shadow-lg hover:scale-[1.03] hover:bg-gradient-to-r hover:from-[#f8f4e6] hover:to-[#f0e4c1] transition-all duration-300 cursor-pointer text-center md:text-left">
+                                <h4 class="text-[#8a6930] font-bold mb-1 text-sm md:text-base">Full-Service Approach</h4>
+                                <p class="text-gray-700 text-xs md:text-sm">From strategy to execution, we handle every aspect of your email marketing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Divider -->
+    <div class="divider my-2"></div>
+    
+    <!-- Services Section -->
+    <section id="services" class="py-12 md:py-12 px-4 md:px-6 bg-[#122620]">
+        <div class="container mx-auto">
+            <!-- Animated Services Header with Decorative Elements -->
+            <div class="relative">
+                <!-- Floating Decorative Elements -->
+                <div class="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-[#d6ad60] to-[#f4ebd0] rounded-full opacity-70 animate-bounce"></div>
+                <div class="absolute -top-2 -right-6 w-6 h-6 bg-[#d6ad60] rounded-full opacity-60 animate-pulse"></div>
+                <div class="absolute -bottom-3 left-1/4 w-4 h-4 bg-gradient-to-r from-[#f4ebd0] to-[#d6ad60] rounded-full opacity-50 animate-ping"></div>
+                
+                <!-- Main Heading with Enhanced Animations -->
+                <h2 class="seasons-font text-4xl md:text-4xl lg:text-5xl font-bold text-center mb-8 md:mb-16 animate-slideUp relative z-10 
+                          bg-gradient-to-r from-[#f4ebd0] via-[#d6ad60] to-[#f4ebd0] bg-clip-text text-transparent 
+                          hover:scale-105 hover:drop-shadow-lg transition-all duration-500 ease-in-out
+                          animate-gradient-shift cursor-default group" 
+                   style="font-family: The Seasons; background-size: 200% 200%;">
+                    Services That Scale Revenue
+                    
+                    <!-- Animated Underline -->
+                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-[#d6ad60] to-[#f4ebd0] 
+                               group-hover:w-full transition-all duration-700 ease-out rounded-full"></div>
+                </h2>
+            </div>
+            
+            <!-- CSS Keyframes for Custom Animations -->
+            <style>
+                @keyframes gradient-shift {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                
+                .animate-gradient-shift {
+                    animation: gradient-shift 4s ease-in-out infinite;
+                }
+            </style>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+                <!-- Email Campaign Strategy -->
+                <div class="service-card bg-gradient-to-br from-[#f4ebd0] to-[#e8d5a6] p-4 md:p-6 rounded-xl border-2 border-[#d6ad60] shadow-lg transition-all duration-300 hover:border-[#b68d40] hover:shadow-2xl md:hover:scale-105 hover:bg-gradient-to-br hover:from-[#f8f0d8] hover:to-[#f0e2b8] animate-fadeIn delay-200 relative overflow-hidden group hover:animate-pulse">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b68d40] to-[#d6ad60] opacity-10 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#b68d40] to-[#d6ad60] opacity-5 rounded-full transform -translate-x-6 translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-[#b68d40] text-3xl transition-all duration-300 group-hover:text-[#d6ad60] group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-black text-sm font-bold">+40% Revenue</div>
+                            <div class="text-black text-xs">Avg Result</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#122620] mb-3 relative z-10 transition-all duration-300 group-hover:text-[#b68d40] group-hover:scale-105">Email Campaign Strategy</h3>
+                    <p class="text-[#122620] text-sm mb-4 relative z-10">Data-driven campaigns that convert browsers into buyers and one-time customers into brand advocates.</p>
+                    <ul class="space-y-2 text-sm relative z-10">
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Behavioral Segmentation</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>A/B Testing</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Revenue Attribution</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Lifecycle Automation</li>
+                    </ul>
+                </div>
+                
+                <!-- List Growth & Optimization -->
+                <div class="service-card bg-gradient-to-br from-[#f4ebd0] to-[#e8d5a6] p-4 md:p-6 rounded-xl border-2 border-[#d6ad60] shadow-lg transition-all duration-300 hover:border-[#b68d40] hover:shadow-2xl md:hover:scale-105 hover:bg-gradient-to-br hover:from-[#f8f0d8] hover:to-[#f0e2b8] animate-fadeIn delay-300 relative overflow-hidden group hover:animate-pulse">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b68d40] to-[#d6ad60] opacity-10 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#b68d40] to-[#d6ad60] opacity-5 rounded-full transform -translate-x-6 translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-[#b68d40] text-3xl transition-all duration-300 group-hover:text-[#d6ad60] group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-black text-sm font-bold">+200% Subscribers</div>
+                            <div class="text-black text-xs">Avg Result</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#122620] mb-3 relative z-10 transition-all duration-300 group-hover:text-[#b68d40] group-hover:scale-105">List Growth & Optimization</h3>
+                    <p class="text-[#122620] text-sm mb-4 relative z-10">Transform your email list into a high-converting asset with our proven growth strategies.</p>
+                    <ul class="space-y-2 text-sm relative z-10">
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Lead Magnets</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Conversion Optimization</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>List Hygiene</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Segmentation Strategy</li>
+                    </ul>
+                </div>
+                
+                <!-- Automation & Flows -->
+                <div class="service-card bg-gradient-to-br from-[#f4ebd0] to-[#e8d5a6] p-4 md:p-6 rounded-xl border-2 border-[#d6ad60] shadow-lg transition-all duration-300 hover:border-[#b68d40] hover:shadow-2xl md:hover:scale-105 hover:bg-gradient-to-br hover:from-[#f8f0d8] hover:to-[#f0e2b8] animate-fadeIn delay-400 relative overflow-hidden group hover:animate-pulse">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b68d40] to-[#d6ad60] opacity-10 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#b68d40] to-[#d6ad60] opacity-5 rounded-full transform -translate-x-6 translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-[#b68d40] text-3xl transition-all duration-300 group-hover:text-[#d6ad60] group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-black text-sm font-bold">24/7 Revenue</div>
+                            <div class="text-black text-xs">On Autopilot</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#122620] mb-3 relative z-10 transition-all duration-300 group-hover:text-[#b68d40] group-hover:scale-105">Automation & Flows</h3>
+                    <p class="text-[#122620] text-sm mb-4 relative z-10">Set and forget systems that work 24/7 to nurture leads and maximize customer lifetime value.</p>
+                    <ul class="space-y-2 text-sm relative z-10">
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Welcome Series</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Abandoned Cart Recovery</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Post Purchase Flows</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Win Back Campaigns</li>
+                    </ul>
+                </div>
+                
+                <!-- Creative & Copywriting -->
+                <div class="service-card bg-gradient-to-br from-[#f4ebd0] to-[#e8d5a6] p-4 md:p-6 rounded-xl border-2 border-[#d6ad60] shadow-lg transition-all duration-300 hover:border-[#b68d40] hover:shadow-2xl md:hover:scale-105 hover:bg-gradient-to-br hover:from-[#f8f0d8] hover:to-[#f0e2b8] animate-fadeIn delay-500 relative overflow-hidden group hover:animate-pulse">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b68d40] to-[#d6ad60] opacity-10 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#b68d40] to-[#d6ad60] opacity-5 rounded-full transform -translate-x-6 translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-[#b68d40] text-3xl transition-all duration-300 group-hover:text-[#d6ad60] group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-black text-sm font-bold">+65% CTR</div>
+                            <div class="text-black text-xs">Avg Result</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#122620] mb-3 relative z-10 transition-all duration-300 group-hover:text-[#b68d40] group-hover:scale-105">Creative & Copywriting</h3>
+                    <p class="text-[#122620] text-sm mb-4 relative z-10">Emails that don't just get opened—they get action. Our creative team crafts messages that convert.</p>
+                    <ul class="space-y-2 text-sm relative z-10">
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Persuasive Copy</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Mobile First Design</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Brand Consistency</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Performance Testing</li>
+                    </ul>
+                </div>
+                
+                <!-- Analytics & Reporting -->
+                <div class="service-card bg-gradient-to-br from-[#f4ebd0] to-[#e8d5a6] p-4 md:p-6 rounded-xl border-2 border-[#d6ad60] shadow-lg transition-all duration-300 hover:border-[#b68d40] hover:shadow-2xl md:hover:scale-105 hover:bg-gradient-to-br hover:from-[#f8f0d8] hover:to-[#f0e2b8] animate-fadeIn delay-600 relative overflow-hidden group hover:animate-pulse">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b68d40] to-[#d6ad60] opacity-10 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#b68d40] to-[#d6ad60] opacity-5 rounded-full transform -translate-x-6 translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-[#b68d40] text-3xl transition-all duration-300 group-hover:text-[#d6ad60] group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-black text-sm font-bold">Clear ROI</div>
+                            <div class="text-black text-xs">Avg Result</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#122620] mb-3 relative z-10 transition-all duration-300 group-hover:text-[#b68d40] group-hover:scale-105">Analytics & Reporting</h3>
+                    <p class="text-[#122620] text-sm mb-4 relative z-10">Crystal clear insights that show exactly how your email drives revenue for your D2C brand.</p>
+                    <ul class="space-y-2 text-sm relative z-10">
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Revenue Attribution</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Customer Journey Mapping</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Performance Dashboards</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>ROI Analysis</li>
+                    </ul>
+                </div>
+                
+                <!-- Deliverability Management -->
+                <div class="service-card bg-gradient-to-br from-[#f4ebd0] to-[#e8d5a6] p-4 md:p-6 rounded-xl border-2 border-[#d6ad60] shadow-lg transition-all duration-300 hover:border-[#b68d40] hover:shadow-2xl md:hover:scale-105 hover:bg-gradient-to-br hover:from-[#f8f0d8] hover:to-[#f0e2b8] animate-fadeIn delay-700 relative overflow-hidden group hover:animate-pulse">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#b68d40] to-[#d6ad60] opacity-10 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#b68d40] to-[#d6ad60] opacity-5 rounded-full transform -translate-x-6 translate-y-6 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-[#b68d40] text-3xl transition-all duration-300 group-hover:text-[#d6ad60] group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-black text-sm font-bold">99% Delivery</div>
+                            <div class="text-black text-xs">Avg Result</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#122620] mb-3 relative z-10 transition-all duration-300 group-hover:text-[#b68d40] group-hover:scale-105">Deliverability Management</h3>
+                    <p class="text-[#122620] text-sm mb-4 relative z-10">Ensure your emails reach the inbox, not the spam folder, with our technical expertise.</p>
+                    <ul class="space-y-2 text-sm relative z-10">
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Domain Authentication</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Reputation Monitoring</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Inbox Placement</li>
+                        <li class="flex items-center text-[#122620]"><i class="fas fa-check text-green-600 mr-2"></i>Compliance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="mt-8  max-w-4xl mx-auto px-4">
+                <div class="bg-gradient-to-br from-[#f4ebd0] to-[#e8d5a6] p-6 md:p-12 rounded-xl border-2 border-[#d6ad60] shadow-lg transition-all duration-300 hover:border-[#b68d40] hover:shadow-2xl md:hover:scale-105 hover:bg-gradient-to-br hover:from-[#f8f0d8] hover:to-[#f0e2b8] relative overflow-hidden group hover:animate-pulse">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#b68d40] to-[#d6ad60] opacity-10 rounded-full transform translate-x-12 -translate-y-12 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#b68d40] to-[#d6ad60] opacity-5 rounded-full transform -translate-x-8 translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
+                    
+                    <div class="text-center relative z-10">
+                        <h2 class="seasons-font text-2xl md:text-4xl font-bold text-[#122620] mb-4 transition-all duration-300 group-hover:text-[#b68d40] md:group-hover:scale-105" style="font-family: The Seasons;">Ready to Scale Your Email Revenue?</h2>
+                        <p class="text-[#122620] text-base md:text-lg mb-6 md:mb-8 max-w-2xl mx-auto">Join 500+ D2C brands that trust us to grow their email revenue. Get your free strategy session today.</p>
+                        
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+                            <div class="flex items-center text-[#122620]">
+                                <div class="w-4 h-4 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                                <span class="font-medium text-sm md:text-base">30-minute free consultation</span>
+                            </div>
+                            <div class="flex items-center text-[#122620]">
+                                <div class="w-4 h-4 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                                <span class="font-medium text-sm md:text-base">Custom strategy roadmap</span>
+                            </div>
+                            <div class="flex items-center text-[#122620]">
+                                <div class="w-4 h-4 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                                <span class="font-medium text-sm md:text-base">No obligation required</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 px-6 bg-white">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-8 animate-slideUp relative">
+                <!-- Floating decorative elements -->
+                <div class="absolute -top-4 left-1/4 w-3 h-3 bg-[#d6ad60] rounded-full animate-bounce" style="animation-delay: 0.5s;"></div>
+                <div class="absolute -top-2 right-1/3 w-2 h-2 bg-[#b68d40] rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                <div class="absolute top-6 left-1/6 w-1 h-1 bg-[#d6ad60] rounded-full animate-ping" style="animation-delay: 1.5s;"></div>
+                
+                <h2 class="seasons-font text-4xl md:text-5xl font-bold mb-4 relative z-10 bg-gradient-to-r from-[#122620] via-[#1a3d2e] to-[#122620] bg-clip-text text-transparent animate-pulse hover:scale-105 transition-transform duration-300 cursor-default"  style="font-family: The Seasons; background-size: 200% 100%; animation: gradient-shift 3s ease-in-out infinite;">Ready to Scale Your Revenue?</h2>
+                
+                <p class="text-lg text-gray-700 relative z-10 hover:text-[#122620] transition-colors duration-300 animate-fadeIn" style="animation-delay: 0.3s;">Let's discuss how we can transform your email marketing into a profit engine. Get in touch today.</p>
+                
+                <!-- Animated underline -->
+                <div class="mx-auto mt-4 w-24 h-1 bg-gradient-to-r from-[#b68d40] to-[#d6ad60] rounded-full animate-pulse"></div>
+            </div>
+            
+            <style>
+                @keyframes gradient-shift {
+                    0%, 100% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                }
+                
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+            
+            <div class="flex flex-col md:flex-row animate-fadeIn delay-200">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <div class="bg-gradient-to-br from-[#f4ebd0] via-[#f0e4c1] to-[#e8d5a6] p-8 rounded-xl shadow-2xl relative overflow-hidden">
+                        <!-- Decorative background elements -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#d6ad60] to-[#b68d40] rounded-full opacity-10 transform translate-x-16 -translate-y-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#b68d40] to-[#d6ad60] rounded-full opacity-15 transform -translate-x-12 translate-y-12"></div>
+                        
+                        <h3 class="text-[#122620] text-2xl font-bold mb-6 relative z-10 text-center md:text-left">Start Your Email Journey</h3>
+                        <p class="text-[#122620] mb-8 relative z-10 text-center md:text-left">Ready to see what strategic email marketing can do for your D2C brand? Let's start with a conversation about your goals.</p>
+                        
+                        <div class="space-y-6 relative z-10">
+                            <div class="flex items-start flex-col md:flex-row text-center md:text-left">
+                                <div class="bg-[#b68d40] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mb-3 md:mb-0 md:mr-4 flex-shrink-0 mx-auto md:mx-0">1</div>
+                                <div>
+                                    <h4 class="text-[#122620] font-bold mb-1">Initial Consultation</h4>
+                                    <p class="text-[#122620] text-sm opacity-80">We'll discuss your current email strategy and goals</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start flex-col md:flex-row text-center md:text-left">
+                                <div class="bg-[#b68d40] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mb-3 md:mb-0 md:mr-4 flex-shrink-0 mx-auto md:mx-0">2</div>
+                                <div>
+                                    <h4 class="text-[#122620] font-bold mb-1">Custom Strategy</h4>
+                                    <p class="text-[#122620] text-sm opacity-80">Tailored approach for your brand and audience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start flex-col md:flex-row text-center md:text-left">
+                                <div class="bg-[#b68d40] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mb-3 md:mb-0 md:mr-4 flex-shrink-0 mx-auto md:mx-0">3</div>
+                                <div>
+                                    <h4 class="text-[#122620] font-bold mb-1">Implementation</h4>
+                                    <p class="text-[#122620] text-sm opacity-80">We execute and optimize for maximum results</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-gradient-to-br from-[#f8f4e6] to-[#f0e4c1] p-8 rounded-xl shadow-xl relative overflow-hidden">
+                        <!-- Decorative background elements -->
+                        <div class="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-[#d6ad60] to-[#b68d40] rounded-full opacity-8 transform -translate-x-10 -translate-y-10"></div>
+                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-[#b68d40] to-[#d6ad60] rounded-full opacity-12 transform translate-x-8 translate-y-8"></div>
+                        
+                     
+                        
+                        <form id="contact-form" class="space-y-6 relative z-10">
+                        <div>
+                            <label for="name" class="block text-[#122620] font-semibold mb-3 text-left">Name</label>
+                            <input type="text" id="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border-2 border-[#d6ad60] bg-white/80 backdrop-blur-sm focus:outline-none focus:border-[#b68d40] focus:ring-2 focus:ring-[#b68d40]/20 hover:border-[#b68d40] hover:shadow-lg hover:scale-[1.02] transition-all duration-300 placeholder-gray-500" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-[#122620] font-semibold mb-3 text-left">Email</label>
+                            <input type="email" id="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg border-2 border-[#d6ad60] bg-white/80 backdrop-blur-sm focus:outline-none focus:border-[#b68d40] focus:ring-2 focus:ring-[#b68d40]/20 hover:border-[#b68d40] hover:shadow-lg hover:scale-[1.02] transition-all duration-300 placeholder-gray-500" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-[#122620] font-semibold mb-3 text-left">Email Marketing Goals</label>
+                            <textarea id="message" rows="5" placeholder="Tell us about your email marketing goals..." class="w-full px-4 py-3 rounded-lg border-2 border-[#d6ad60] bg-white/80 backdrop-blur-sm focus:outline-none focus:border-[#b68d40] focus:ring-2 focus:ring-[#b68d40]/20 hover:border-[#b68d40] hover:shadow-lg hover:scale-[1.02] transition-all duration-300 resize-none placeholder-gray-500" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-[#b68d40] to-[#d6ad60] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 flex items-center justify-center group">
+                            <span id="submit-text" class="flex items-center">
+                                Schedule a Meeting 
+                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </span>
+                            <span id="submit-spinner" class="hidden ml-2">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </span>
+                        </button>
+                        
+                        <div id="form-success" class="hidden p-4 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 text-green-800 rounded-xl shadow-md">
+                            <div class="flex items-center">
+                                <div class="bg-green-500 rounded-full p-1 mr-3">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold">Success! Redirecting you to schedule your strategy call!</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-gradient-to-r from-[#f4ebd0] to-[#e8d5a6] border-2 border-[#d6ad60] rounded-xl text-center">
+                            <p class="text-[#122620] text-sm font-medium flex items-center justify-center">
+                                <svg class="w-4 h-4 mr-2 text-[#b68d40]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                This will open your Calendly booking page to schedule a 30-minute strategy call
+                            </p>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-bg text-white py-6 px-6">
+        <div class="container mx-auto">
+            <div class="mb-2">
+                <div class="text-center text-2xl font-bold seasons-font mb-6 md:mb-0">InboxProfit</div>
+            </div>
+            
+            <div class="border-t border-[#b68d40] pt-4 text-center text-[#d6ad60]">
+                <p>&copy; 2025 InboxProfit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <div id="scroll-top" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+        
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contact-form');
+        const submitText = document.getElementById('submit-text');
+        const submitSpinner = document.getElementById('submit-spinner');
+        const formSuccess = document.getElementById('form-success');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            submitText.textContent = 'Sending...';
+            submitSpinner.classList.remove('hidden');
+            
+            // Simulate form submission (replace with actual AJAX call)
+            setTimeout(() => {
+                // Reset form
+                contactForm.reset();
+                
+                // Show success message
+                submitText.textContent = 'Schedule a Meeting';
+                submitSpinner.classList.add('hidden');
+                formSuccess.classList.remove('hidden');
+                
+                // Redirect to Calendly after 2 seconds
+                setTimeout(() => {
+                    window.open('https://calendly.com/vinay-inboxprofit/30min', '_blank');
+                    formSuccess.classList.add('hidden');
+                }, 2000);
+            }, 1500);
+        });
+        
+        // Scroll animations
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-slideUp, .animate-fadeIn');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initial check on page load
+        window.addEventListener('load', animateOnScroll);
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Typewriter effect
+         const typewriterElement = document.getElementById('typewriter-heading');
+         if (typewriterElement) {
+             const text = typewriterElement.getAttribute('data-text').replace('|', '\n');
+             typewriterElement.textContent = '';
+             
+             let i = 0;
+             function typeWriter() {
+                 if (i < text.length) {
+                     typewriterElement.textContent += text.charAt(i);
+                     i++;
+                     setTimeout(typeWriter, 100);
+                 } else {
+                     // Remove the cursor after typing is complete
+                     setTimeout(() => {
+                         typewriterElement.style.borderRight = 'none';
+                     }, 1000);
+                 }
+             }
+             
+             // Start typing after a short delay
+             setTimeout(typeWriter, 500);
+         }
+    </script>
+</body>
+</html>
